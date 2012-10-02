@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # you can enable/disable minification using an environment variable
+    # SetEnvIf Host ^dev.mysite.com$ JITPACK_MINIFY=On
+
+    # if packed asset file does not exist, have jitpack create it.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^cache\/(.*)$ jitpack/jitpack.php?file=$1 [L]
+</IfModule>
